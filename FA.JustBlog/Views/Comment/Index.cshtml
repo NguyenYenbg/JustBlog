@@ -1,0 +1,21 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutJB.cshtml";
+}
+
+
+<div class="container">
+
+    @{ var message = TempData["Message"] as string; }
+    <br />
+    <h3 style="text-align:center; color:darkslateblue"></h3>
+
+    @if (!string.IsNullOrEmpty(message))
+    {
+        <div class="alert alert-success">@message</div>}
+
+    <div>
+        @Html.ActionLink("Back to List", "Index","Post")
+    </div>
+</div>

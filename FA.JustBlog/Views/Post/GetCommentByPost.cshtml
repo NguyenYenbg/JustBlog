@@ -1,0 +1,40 @@
+﻿@model IEnumerable<FA.JustBlog.Core.Models.Entities.Comment>
+
+@{
+    ViewBag.Title = "GetCommentByPost";
+    Layout = "~/Views/Shared/_LayoutJB.cshtml";
+}
+
+<div class="container">
+    <h2>Get Comment By Post</h2>
+
+    <p>
+        @Html.ActionLink("Add comment", "Create", "Comment")
+    </p>
+
+    @foreach (var item in Model)
+    {
+
+        <h4>
+            Name:@Html.DisplayFor(modelItem => item.Name)
+        </h4>
+        <p>
+            Email:@Html.DisplayFor(modelItem => item.Email)
+        </p>
+        <p>
+            @Html.DisplayFor(modelItem => item.CommentHeader)
+        </p>
+        <p>
+            @Html.DisplayFor(modelItem => item.CommentText)
+        </p>
+        <p>
+            @Html.DisplayFor(modelItem => item.CommentTime)
+        </p>
+        <p>
+            @Html.ActionLink("Edit","Edit", "Comment", new { id = @item.Id },null) |       
+            @Html.ActionLink("Delete", "Delete", "Comment", new { id = @item.Id },null)
+        </p>
+        <hr />
+    }
+
+</div>

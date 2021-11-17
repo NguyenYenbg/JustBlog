@@ -1,0 +1,60 @@
+﻿
+@model IEnumerable<FA.JustBlog.Core.Models.Entities.Category>
+@{
+    ViewBag.Title = "Index";
+}
+
+<!-- Navigation-->
+<nav class="navbar navbar-expand-lg navbar-light" id="mainNav">
+    <div class="container px-4 px-lg-5">
+        @Html.ActionLink("Start JB", "Index", "Post", null, new { @class = "navbar-brand" })
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+            Menu
+            <i class="fas fa-bars"></i>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+            <ul class="navbar-nav ms-auto py-4 py-lg-0">
+                <li class="nav-item">@Html.ActionLink("Home", "Index", "Post", null, new { @class = "nav-link px-lg-3 py-3 py-lg-4" })</li>
+                <li class="nav-item">
+                    @Html.ActionLink("About", "Index", "Post", null, new { @class = "nav-item nav-link px-lg-3 py-3 py-lg-4 dropdown-toggle", @id = "navbarDropdown", @role = "button" })
+                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    </ul>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-item nav-link px-lg-3 py-3 py-lg-4 dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        Category
+                    </a>
+
+                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        @foreach (var item in Model)
+                        {
+                            <li>@Html.ActionLink(item.Name, "View", "Category", new { name = item.Name }, new { @class = "dropdown-item" })</li>
+                            <li><hr class="dropdown-divider"></li>
+                        }
+                    </ul>
+                </li>
+                <li class="nav-item">
+                    @Html.ActionLink("Tag", "Index", "Tag", null, new { @class = "nav-item nav-link px-lg-3 py-3 py-lg-4 dropdown-toggle", @id = "navbarDropdown", @role = "button" })
+                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    </ul>
+                </li>
+                @Html.Partial("_LoginPartial")
+
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<!-- Page Header-->
+<header class="masthead" style="background-image: url('../../Content/assets/img/post-sample-image.jpg');">
+    <div class="container position-relative px-4 px-lg-5">
+        <div class="row gx-4 gx-lg-5 justify-content-center">
+            <div class="col-md-10 col-lg-8 col-xl-7">
+                <div class="site-heading">
+                    <h1>Categogy Me</h1>
+                    <span class="subheading">Welcome to my category</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>

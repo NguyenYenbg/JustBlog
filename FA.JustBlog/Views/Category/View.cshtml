@@ -1,0 +1,43 @@
+﻿@model IEnumerable<FA.JustBlog.Core.Models.Entities.Post>
+
+@{
+    ViewBag.Title = "View";
+    Layout = "~/Views/Shared/_LayoutJB.cshtml";
+}
+
+
+
+
+<div class="container">
+<h2>View</h2>
+    @foreach (var item in Model)
+    {
+
+        <h4>@Html.DisplayFor(modelItem => item.Title)</h4>
+        <p class="post-subtitle">
+            Posted: @item.PostedOn with rate rate count @item.RateCount by view count @item.ViewCount, Total rate:@item.TotalRate,
+            CategoryId: @item.CategoryId, modified: @item.Modified,
+            Published: @item.Published
+        </p>
+        <p>
+            UrlSlug: @item.UrlSlug
+        </p>
+        <p>
+            Short description: @item.ShortDescription
+        </p>
+        <p>
+            @item.ShortContent
+        </p>
+        <p>
+            @item.PostContent
+        </p>
+
+        <br />
+        <hr />
+
+
+
+    }
+</div>
+
+
