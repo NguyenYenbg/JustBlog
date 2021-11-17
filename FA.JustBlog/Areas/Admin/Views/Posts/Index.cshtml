@@ -1,0 +1,9 @@
+﻿
+@{ var message = TempData["Message"] as string; }
+<br />
+<h3 style="text-align:center; color:darkslateblue">Welcome to the management page</h3>
+
+@if (!string.IsNullOrEmpty(message))
+{
+<div class="alert alert-success">@message</div>}
+

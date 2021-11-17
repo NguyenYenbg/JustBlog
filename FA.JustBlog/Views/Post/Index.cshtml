@@ -1,0 +1,72 @@
+﻿@using FA.JustBlog.Core.Models.Entities;
+
+@model List<Post>
+@{
+    ViewBag.Title = "Post";
+}
+
+
+@Html.Partial("View")
+
+<!--Header-->
+<header class="masthead" style="background-image: url('../../Content/assets/img/home-bg.jpg');">
+    <div class="container position-relative px-4 px-lg-5">
+        <div class="row gx-4 gx-lg-5 justify-content-center">
+            <div class="col-md-10 col-lg-8 col-xl-7">
+                <div class="site-heading">
+                    <h1>Just Blog</h1>
+                    <span class="subheading">A Blog Theme by Start .</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+
+
+
+<div class="container">
+    <div class="row">
+        <div class="col-lg-8 col-md-10 mx-auto">
+            <div class="post-preview">
+                
+                @using (Html.BeginForm("FindPostByTitle", "Post", FormMethod.Get))
+                {
+
+                    <label>Search by title: </label>
+                    @Html.TextBox("search")<input type="submit" name="submit" value="Search" />
+                }
+                <br />
+
+                <h2>All posts!</h2>
+                @foreach (var item in Model)
+                {
+                    <h4>
+                        @Html.ActionLink(@item.Title, "Details", "Post", new
+                {
+                    year = @item.PostedOn.Value.Year,
+                            month = @item.PostedOn.Value.Month,
+                    @title = @item.UrlSlug
+                }, null)
+                    </h4>
+
+                    <p class="post-subtitle" style="color:#808080">
+                        Posted: @item.PostedOn with rate @item.RateCount by @item.ViewCount
+                    </p>
+                    <p class="post-meta">
+                        @item.PostContent
+                    </p>
+                    @Html.ActionLink("Comment", "GetCommentByPost", new { id = @item.Id })
+                    <br /><br /><hr />
+                }
+
+
+            </div>
+            <hr>
+        </div>
+    </div>
+</div>
+
+
+
+
